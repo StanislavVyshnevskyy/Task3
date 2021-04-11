@@ -31,7 +31,6 @@ namespace Task3
 
         }
 
-
         //evaluates input parameters for the game
         //returns false if user wants to exit game
         //returns true if parameters are valid
@@ -56,7 +55,6 @@ namespace Task3
             return result;
         }
 
-
         private static string MovesComparator(int _userMove, int _myMove) {
             string _result;
             if (_userMove == _myMove)
@@ -72,6 +70,8 @@ namespace Task3
             }
             return _result;
         }
+
+        // Prints available moves
         private static void PrintMoves(string[] _a) {
             Console.WriteLine("Available moves:");
             for (int i = 0; i < _a.Length; i++)
@@ -102,6 +102,10 @@ namespace Task3
             return _move;
         } 
 
+        // Evaluates if users move valid.
+        // Returns true if move valid.
+        // Asks user to retry if move is invalid.
+        // Returns false if user wants to exit
         private static bool MoveEvaluator(string _move, out int _n) {
             var _result = false;
             _n = -1;
@@ -125,6 +129,7 @@ namespace Task3
             return _result;
         }
 
+        // Generates HMAC using SHA256
         private static string GenerateHMAC(string _str, Byte[] _k) {
             using (var _sha = new HMACSHA256(_k)) {
                 var _hmac = _sha.ComputeHash(Encoding.ASCII.GetBytes(_str));
